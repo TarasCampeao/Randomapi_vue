@@ -27,6 +27,28 @@
 	        </div>
 	        <div class="more_info">
 	        	<div class="main_name">{{user.name.first}} <span>{{user.gender}}</span></div>
+	        	<ul class="detail_list">
+	        		<li>
+	        			<div><strong>Username</strong> {{user.login.username}}</div>
+	        			<div><strong>Registered</strong> {{user.registered.date | sliceDate}}</div>
+	        			<div><strong>Email</strong> {{user.email}}</div>
+	        		</li>
+	        		<li>
+	        			<div><strong>Address</strong> {{user.location.street}}</div>
+	        			<div><strong>City</strong> {{user.location.city}}</div>
+	        			<div><strong>Zip Code</strong> {{user.location.postcode}}</div>
+	        		</li>
+	        		<li>
+	        			<div><strong>Birthday</strong> {{user.dob.date | sliceDate}}</div>
+	        			<div><strong>Phone</strong> {{user.phone}}</div>
+	        			<div><strong>Cell</strong> {{user.cell}}</div>
+	        		</li>
+	        		<li>
+	        			<div class="img_user img_more img_size">
+	        				<img :src="user.picture.large" alt=""/>
+	        			</div>
+	        		</li>
+	        	</ul>
 	        </div>
 	      </li>
 	    </ul>
@@ -55,6 +77,11 @@ export default {
 	},
 	methods: {
 
+	},
+	filters: {
+		sliceDate(value) {
+			return `${value.slice(0, 10)}`
+		}
 	}
 }	
 
