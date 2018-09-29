@@ -21,12 +21,12 @@
 		      	<div class="stnd_div first_name">{{user.login.username}}</div>
 		        <div class="stnd_div cell_user">{{user.cell}}</div>
 		        <div class="stnd_div location_user">{{user.location.state}}</div>
-		        <button class="btn_more">
-		        	<i class="material-icons">add</i>
+		        <button class="btn_more" @click="visible = !visible">
+		        	<i class="fas fa-plus"></i>
 		        </button>
 	        </div>
-	        <div class="more_info">
-	        	<div class="main_name">{{user.name.first}} <span>{{user.gender}}</span></div>
+	        <div class="more_info" v-show="!visible">
+	        	<div class="main_name">{{user.name.first}} <i :class="getGender(user.gender)"></i></div>
 	        	<ul class="detail_list">
 	        		<li>
 	        			<div><strong>Username</strong> {{user.login.username}}</div>
@@ -65,7 +65,8 @@ export default {
 	data() {
 		return {
 			results: [],
-			items: []
+			items: [],
+			visible: true
 		}
 	},
 	mounted() {
@@ -73,10 +74,15 @@ export default {
 		.then(response => response.json())
 		.then((data) => {
 			this.items = data;
-		})
+		}) 
 	},
 	methods: {
-
+	    getGender(gender) {
+	    	switch(gender) {
+	    		case "female": return "fas fa-female"
+	    		case "male": return "fas fa-male"
+	    	}
+	    }
 	},
 	filters: {
 		sliceDate(value) {
