@@ -3,12 +3,15 @@
 import Vue from 'vue';
 //import Vuex from 'vuex';
 import App from './App';
-
+import NaviCell from './components/NaviCell'
 
 //Vue.use(Vuex)
 
-
 Vue.config.productionTip = false;
+
+
+Vue.component('NaviCell', NaviCell)
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -16,3 +19,5 @@ new Vue({
   template: '<App/>',
   components: { App },
 });
+
+
