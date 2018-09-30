@@ -28,6 +28,7 @@ h1
   padding: 30px
 
 .user_list
+  transition: .3s linear
   li.people_cell
     margin-bottom: 15px
     padding: 5px 0
@@ -73,6 +74,19 @@ h1
   i
     font-size: 42px
     color: #666666
+    transition: .3s linear
+  &:hover
+    i
+      color: #ab5f5f
+      transition: .3s linear
+
+.collapsed
+  .btn_more
+    i
+      color: #ab5f5f
+      transition: .3s linear
+      transform: rotate(45deg)
+      transform-origin: 50% 50%
 
 .detail_list
   display: flex
@@ -123,6 +137,7 @@ h1
 
 .people_cell
   position: relative
+  transition: .3s linear
 
 .delete_btn
   position: absolute
@@ -131,3 +146,10 @@ h1
   transform: translateY(-50%)
   i
     font-size: 20px
+
+.list-enter-active, .list-leave-active
+  transition: all .8s
+
+.list-leave-to
+  opacity: 0
+  transform: translateX(-30px)

@@ -1,8 +1,9 @@
 <template>
 	<div class="name-block">
 	    <navi-cell></navi-cell>
-	    <ul class="user_list collapse" data-collapse v-if="items.results != null">
-	      <li class="people_cell" v-for="(user, index) in items.results" :class="{ collapsed: detectItem(user) }" :key="user.seed">
+	    <!-- <transition-group name="list" tag="ul" class="user_list collapse"> -->
+	    <ul class="user_list collapse">
+	      <li class="people_cell" v-for="(user, index) in items.results" :class="{ collapsed: detectItem(user) }" :key="user.id.value">
 	      	<div class="main_info" @click="toggleItem(user)">
 	      		<div class="stnd_div">
 			      	<div class="img_user img_size">
@@ -47,36 +48,18 @@
 	        	</div>
 	        </div>
 
-	        <button class="delete_btn">
+	        <button class="delete_btn" @click="removeUser($event, index)">
 	        	<i class="fas fa-trash-alt"></i>
 	        </button>
 	      </li>
 	    </ul>
-
-
-<!-- 	    <div class="collapse" data-collapse v-if="items.results != null">
-	      <div v-for="(user, index) in items.results" class="collapse_user" :class="{ collapsed: detectItem(user) }">
-	        <div class="collapse_head" @click="toggleItem(user)">
-	          <div class="collapse_container">{{ user.name.last }}</div>
-	        </div>
-
-
-	        <div class="collapse_body" :class="{ show: detectItem(user) }" :style="{ height: toggleHeight(user) }">
-	          <div class="collapse_container">{{ user.cell }}</div>
-	        </div>
-
-
-	      </div>
-	    </div>
- -->
-
+	    <!-- </transition-group> -->
 	</div>
 </template>
 
 
 
 <script>
-//import VueCollapse from 'vue2-collapse'
 
 export default {
 	name: 'NameList',
@@ -86,7 +69,8 @@ export default {
 			items: [],
 	        selectedItem: null,
 	        handleSelf: 'false',
-            bodyHeight: 0
+            bodyHeight: 0,
+            user: ''
 		}
 	},
 	mounted() {
@@ -95,12 +79,6 @@ export default {
 		.then((data) => {
 			this.items = data;
 		});
-
-	    // if (this.items != null) {
-	    //   this.handleTrigger(this.triggerItem);
-	    // }
-	    
-	    //window.addEventListener('resize', this.handleResize);
 	},
 	methods: {
 	    getGender(gender) {
@@ -140,15 +118,14 @@ export default {
 	        this.selectedItem = user;
 	      }
 	    },
-    
 	    handleTrigger(index) {
-	      if (index == null) {
-	        return;
-	      }
+	        if (index == null) {
+	          return;
+	        }
 
-	      let targetItem = document.querySelector('[data-collapse]').childNodes[index];
-	      let targetTrigger = targetItem.firstElementChild;
-	      targetTrigger.click();
+	        let targetItem = document.querySelector('[data-collapse]').childNodes[index];
+	        let targetTrigger = targetItem.firstElementChild;
+	        targetTrigger.click();
 	    },
 	    toggleHeight(user) {
 	      if (this.detectItem(user)) {
@@ -156,12 +133,16 @@ export default {
 	      } else {
 	        return 0;
 	      }
-	    }	
+	    },
+	    removeUser(user, index) {
+	    	this.items.results.splice(index, 1); 
+	    }
+
+
 	},
     destroyed() {
       window.removeEventListener('resize', this.handleResize);
     },
-   	//accordion end
 
 	filters: {
 		sliceDate(value) {
