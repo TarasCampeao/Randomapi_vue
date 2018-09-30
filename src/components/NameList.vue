@@ -19,7 +19,6 @@
 		        	<i class="fas fa-plus"></i>
 		        </button>
 	        </div>
-
 	        <div class="more_info collapse_body" :class="{ show: detectItem(user) }" :style="{ height: toggleHeight(user) }">
 	        	<div>
 		        	<div class="main_name">{{user.name.first}} <i :class="getGender(user.gender)"></i></div>
@@ -47,8 +46,7 @@
 		        	</ul>
 	        	</div>
 	        </div>
-
-	        <button class="delete_btn" @click="removeUser($event, index)">
+	        <button class="delete_btn" @click="removeUser(user, index)">
 	        	<i class="fas fa-trash-alt"></i>
 	        </button>
 	      </li>
@@ -87,11 +85,10 @@ export default {
 	    		case "male": return "fas fa-male"
 	    	}
 	    },
-	    //accordion start
+	    //accordeon
 	    detectItem(user) {
 	      return this.selectedItem === user;
 	    },
-    
 	    toggleItem(user) {
 	      let target = event.currentTarget;
 	      let targetBody = target.nextElementSibling;
@@ -118,15 +115,6 @@ export default {
 	        this.selectedItem = user;
 	      }
 	    },
-	    handleTrigger(index) {
-	        if (index == null) {
-	          return;
-	        }
-
-	        let targetItem = document.querySelector('[data-collapse]').childNodes[index];
-	        let targetTrigger = targetItem.firstElementChild;
-	        targetTrigger.click();
-	    },
 	    toggleHeight(user) {
 	      if (this.detectItem(user)) {
 	        return this.bodyheight = "230px";
@@ -134,6 +122,7 @@ export default {
 	        return 0;
 	      }
 	    },
+	    //remove user
 	    removeUser(user, index) {
 	    	this.items.results.splice(index, 1); 
 	    }
