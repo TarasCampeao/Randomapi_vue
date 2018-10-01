@@ -42,7 +42,7 @@ export default {
           this.active = ((document.documentElement
           && document.documentElement.scrollTop)
           || document.body.scrollTop ) > 0.2 * window.innerHeight
-      }
+      },
   }
 };
 </script>

@@ -65,8 +65,7 @@ export default {
 			items: [],
 	        selectedItem: null,
 	        handleSelf: 'false',
-            bodyHeight: 0,
-            user: ''
+            bodyHeight: 0
 		}
 	},
 	mounted() {
@@ -135,7 +134,7 @@ export default {
 		sliceDate(value) {
 			return `${value.slice(0, 10)}`
 		}
-	}
+	},
 }	
 
 </script>
