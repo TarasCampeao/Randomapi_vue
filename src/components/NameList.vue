@@ -1,7 +1,6 @@
 <template>
 	<div class="name-block">
 	    <navi-cell></navi-cell>
-	    <!-- <transition-group name="list" tag="ul" class="user_list collapse"> -->
 	    <ul class="user_list collapse">
 	      <li class="people_cell" v-for="(user, index) in items.results" :class="{ collapsed: detectItem(user) }" :key="user.id.value">
 	      	<div class="main_info" @click="toggleItem(user)">
@@ -51,7 +50,6 @@
 	        </button>
 	      </li>
 	    </ul>
-	    <!-- </transition-group> -->
 	</div>
 </template>
 
