@@ -1,0 +1,113 @@
+@media only screen and (max-width: 992px)
+	.stnd_div
+		font-size: 16px
+
+@media only screen and (max-width: 900px)
+	.stnd_div
+		font-size: 14px
+	.main_info
+		display: block
+		min-height: 100px
+		padding-left: 120px
+		position: relative
+		span
+			display: inline-block
+			font-weight: bold
+		.stnd_div
+			&:nth-of-type(1)
+				width: auto
+				position: absolute
+				left: 10px
+	.wrapper_fix.fix, .wrapper_fix
+		display: none
+	.stnd_div
+		width: 48%
+		display: inline-block
+		padding-right: 20px
+	.detail_list
+		display: block
+		li
+			&:last-of-type
+				position: absolute
+				right: 20px
+				top: 50%
+				transform: translateY(-50%)
+	.collapse_body
+		position: relative
+	.btn_more
+		top: 55px
+		right: 15px
+		transform: translateY(-50%)
+
+
+@media only screen and (max-width: 768px)
+	.stnd_div
+		width: 31%
+		padding-right: 10px
+		margin-bottom: 5px
+		span
+			display: block
+
+
+@media only screen and (max-width: 680px)
+	.stnd_div
+		width: 48%
+	.detail_list
+		padding: 0 30px 0 10px
+		li
+			div
+				font-size: 13px
+	.main_name
+		padding-left: 10px
+
+
+@media only screen and (max-width: 540px)
+	.detail_list
+		li
+			&:last-of-type
+				display: none
+			div
+				font-size: 14px
+	.main_info
+		padding-right: 0
+		.people_cell
+			position: relative
+	.main_name
+		padding: 20px 0 0 10px
+	.btn_more
+		top: 10px
+		transform: translateY(0)
+		i
+			font-size: 30px
+	.name-block
+		padding: 5px
+	.delete_btn
+		right: 20px
+		top: auto
+		bottom: 5px
+		transform: translateY(0)
+
+
+@media only screen and (max-width: 480px)
+	.stnd_div
+		width: auto
+		display: block
+		font-size: 13px
+		span
+			display: inline-block
+	.img_user
+		width: 80px
+		height: 80px
+	.main_info
+		padding: 0 30px 0 100px
+	.btn_more
+		top: 0px
+		right: 5px
+	.delete_btn
+		right: 7px
+
+
+@media only screen and (max-width: 380px)
+	.stnd_div
+		span
+			display: block

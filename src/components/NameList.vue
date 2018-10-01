@@ -10,11 +10,11 @@
 			      		<img :src="user.picture.large" alt=""/>
 			      	</div>
 	      		</div>
-		      	<div class="stnd_div last_name">{{user.name.last}}</div>
-		      	<div class="stnd_div first_name">{{user.name.first}}</div>
-		      	<div class="stnd_div first_name">{{user.login.username}}</div>
-		        <div class="stnd_div cell_user">{{user.cell}}</div>
-		        <div class="stnd_div location_user">{{user.location.state}}</div>
+		      	<div class="stnd_div last_name"><span>Last</span> {{user.name.last}}</div>
+		      	<div class="stnd_div first_name"><span>First</span> {{user.name.first}}</div>
+		      	<div class="stnd_div first_name"><span>Username</span> {{user.login.username}}</div>
+		        <div class="stnd_div cell_user"><span>Phone</span> {{user.cell}}</div>
+		        <div class="stnd_div location_user"><span>Location</span> {{user.location.state}}</div>
 		        <button class="btn_more">
 		        	<i class="fas fa-plus"></i>
 		        </button>
