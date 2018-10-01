@@ -21,7 +21,7 @@
 				<label for="location_name">Location</label>
 				<input id="location_name" type="text" name="name" v-model="location">
 			</div> -->
-			<button type="submit" @click="handler()">Save</button>
+			<button class="form_btn common_btn" type="submit" @click="handler()">Save</button>
 		</form>
 	</div>
 </template>
