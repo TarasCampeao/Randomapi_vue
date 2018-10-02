@@ -1,9 +1,6 @@
 <template>
 	<div class="form_user">
 		<form class="form_zone">
-	        <div class="alert" v-if="!showAlert">
-	            {{alertMessage}}
-	        </div>
 <!-- 			<div class="fill_bit">
 				<label for="firt_name">First name</label>
 				<input id="first_name" type="text" name="text" v-model="first">
@@ -48,18 +45,19 @@ export default {
 		}
 	},
 	methods: {
-        addContact(){
-            if(this.phone != '') {
-                this.items.push({phone: this.phone});
-                //this.first ='';
-                this.phone ='';
-                this.showAlert = true;
-            } else if(this.phone ==''){
-                this.alertMessage = "Please fill the inputs."
-                this.showAlert = false;
-            }
-            console.log("Working!")
-        }
+        // addContact(){
+        //     if(this.phone != '') {
+        //         this.items.push(this.items.results[0]);
+        //         //this.first ='';
+        //         this.phone ='';
+        //         this.showAlert = true;
+        //     }
+        //     // else if(this.phone ==''){
+        //     //     this.alertMessage = "Please fill the inputs."
+        //     //     this.showAlert = false;
+        //     // }
+        //     console.log("Working!")
+        // }
     }
 }
 </script>

@@ -73,6 +73,7 @@ export default {
 		.then(response => response.json())
 		.then((data) => {
 			this.items = data;
+			console.log(this.items)
 		});
 	},
 	methods: {
@@ -122,9 +123,7 @@ export default {
 	    //remove user
 	    removeUser(user, index) {
 	    	this.items.results.splice(index, 1); 
-	    }
-
-
+	    },
 	},
     destroyed() {
       window.removeEventListener('resize', this.handleResize);
