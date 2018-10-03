@@ -125,9 +125,6 @@ export default {
 	    	this.items.results.splice(index, 1); 
 	    },
 	},
-    destroyed() {
-      window.removeEventListener('resize', this.handleResize);
-    },
 
 	filters: {
 		sliceDate(value) {
