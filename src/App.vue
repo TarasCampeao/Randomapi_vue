@@ -7,40 +7,53 @@
   <div id="app" class="container">
     <navi-cell :class="{ scrolled: active, fix: always }"></navi-cell>
     <h1>Users list!</h1>
-    <!-- <button class="add_user common_btn" @click="visible = !visible">Add user</button> -->
-    <form-add v-show="!visible"></form-add>
-    <name-list></name-list>
+    <button class="add_user common_btn" @click="showForm()">Add user</button>
+    <form-add :items.sync="items" v-show="visible"></form-add>
+    <name-list :items.sync="items"></name-list>
   </div>
 </template>
 
 <script>
 import NameList from './components/NameList'
-
+import FormAdd from './components/FormAdd'
 
 export default {
   name: 'app',
   components: {
-    NameList
+    NameList,
+      FormAdd
   },
   data() {
     return {
-      visible: 'true',
-      active: 'false',
-      always: 'true'
+      visible: false,
+      active: false,
+      always: true,
+        items: []
     }
   },
-  created: function () {
+  created() {
       window.addEventListener('scroll', this.handleScroll);
   },
-  destroyed: function () {
+  destroyed() {
       window.removeEventListener('scroll', this.handleScroll);
   },
+    mounted() {
+        fetch("https://randomuser.me/api/?results=6")
+            .then(response => response.json())
+            .then((data) => {
+                this.items = data;
+                console.log(this.items)
+            });
+    },
   methods: {
-      handleScroll() {
+      handleScroll(r) {
           this.active = ((document.documentElement
           && document.documentElement.scrollTop)
           || document.body.scrollTop ) > 0.2 * window.innerHeight
       },
+      showForm() {
+          this.visible = true;
+      }
   }
 };
 </script>

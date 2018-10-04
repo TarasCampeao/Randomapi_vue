@@ -59,22 +59,14 @@
 
 export default {
 	name: 'NameList',
+	props: ['items'],
 	data() {
 		return {
 			results: [],
-			items: [],
 	        selectedItem: null,
 	        handleSelf: 'false',
             bodyHeight: 0
 		}
-	},
-	mounted() {
-		fetch("https://randomuser.me/api/?results=6")
-		.then(response => response.json())
-		.then((data) => {
-			this.items = data;
-			console.log(this.items)
-		});
 	},
 	methods: {
 	    getGender(gender) {
@@ -91,7 +83,7 @@ export default {
 	      let target = event.currentTarget;
 	      let targetBody = target.nextElementSibling;
 	      let targetBodyContainer = targetBody.firstElementChild;
-	      
+
 	      if (this.accordion) {
 	        if (targetBody.style.height === '0px') {
 	          targetBody.style.height = targetBodyContainer.offsetHeight + 'px';
@@ -122,7 +114,9 @@ export default {
 	    },
 	    //remove user
 	    removeUser(user, index) {
-	    	this.items.results.splice(index, 1); 
+	        // TODO
+	        const newItems = [];
+            this.$emit('update:items', newItems);
 	    },
 	},
 
@@ -131,6 +125,6 @@ export default {
 			return `${value.slice(0, 10)}`
 		}
 	},
-}	
+}
 
 </script>
