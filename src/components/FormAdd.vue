@@ -2,12 +2,12 @@
 	<div class="form_user">
 		<form class="form_zone">
 			<div class="fill_bit">
-				<label for="firt_name">First name</label>
-				<input id="first_name" type="text" name="text" v-model="first">
+				<label for="first_name">First name</label>
+				<input id="first_name" type="text" name="text" v-model="firstName">
 			</div>
 			<div class="fill_bit">
 				<label for="last_name">Last name</label>
-				<input id="last_name" type="text" name="name" v-model="last">
+				<input id="last_name" type="text" name="name" v-model="lastName">
 			</div>
 			<div class="fill_bit">
 				<label for="username_name">Username</label>
@@ -28,29 +28,41 @@
 
 
 <script>
-	
+
 
 export default {
 	data() {
 		return {
-			items: [],
-			results: [],
-			phone: '',
+			username: null,
+			firstName: null,
+			lastName: null,
+			phone: null,
+			location: null,
 			showAlert: true,
             alertMessage: ''
 		}
 	},
 	methods: {
-        addContact(phone){
-            if(this.phone != '') {
-                this.items.push({phone: this.phone});
-                this.phone ='';
-                this.showAlert = true;
-            } else if(this.phone ==''){
-                this.alertMessage = "Please fill the inputs."
-                this.showAlert = false;
-            }
-            console.log("Working!")
+        addContact() {
+            const {
+                username,
+                firstName,
+                lastName,
+                phone,
+                location
+            } = this;
+            const valid = !!(username && firstName && lastName && phone && location);
+	        if (valid) {
+                 const newUser = {
+                    username,
+                    firstName,
+                    lastName,
+                    phone,
+                    location
+                };
+                 // TODO
+                this.$emit('update:items', [...this.items, newUser]);
+	        }
         }
     }
 }
