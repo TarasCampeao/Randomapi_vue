@@ -3,12 +3,20 @@
 		<form class="form_zone">
 			<div class="fill_bit">
 				<label for="firt_name">First name</label>
+				<input id="firt_name" type="text" name="text" v-model="firtName">
+			</div>
+			<div class="fill_bit">
+				<label for="last_name">Last name</label>
+				<input id="last_name" type="text" name="text" v-model="lastName">
+			</div>
+<!-- 			<div class="fill_bit">
+				<label for="firt_name">First name</label>
 				<input id="first_name" type="text" name="text" v-model="first">
 			</div>
 			<div class="fill_bit">
 				<label for="last_name">Last name</label>
 				<input id="last_name" type="text" name="name" v-model="last">
-			</div>
+			</div> -->
 			<div class="fill_bit">
 				<label for="username_name">Username</label>
 				<input id="username_name" type="text" name="name" v-model="username">
@@ -33,24 +41,49 @@
 export default {
 	data() {
 		return {
+			username: null,
+			firtName: null,
+			lastName: null,
+			phone: null,
+			location: null,
 			items: [],
 			results: [],
-			phone: '',
 			showAlert: true,
             alertMessage: ''
 		}
 	},
 	methods: {
-        addContact(phone){
-            if(this.phone != '') {
-                this.items.push({phone: this.phone});
-                this.phone ='';
-                this.showAlert = true;
-            } else if(this.phone ==''){
-                this.alertMessage = "Please fill the inputs."
-                this.showAlert = false;
-            }
-            console.log("Working!")
+        // addContact(phone){
+        //     if(this.phone != '') {
+        //         this.items.push({phone: this.phone});
+        //         this.phone ='';
+        //         this.showAlert = true;
+        //     } else if(this.phone ==''){
+        //         this.alertMessage = "Please fill the inputs."
+        //         this.showAlert = false;
+        //     }
+        //     console.log("Working!")
+        // },
+        addContact() {
+        	const {
+        		username,
+        		firstName,
+        		lastName,
+        		phone,
+        		location
+        	} = this;
+        	const valid = !(username && firstName && lastName && phone && location);
+        	if (valid) {
+		         const newUser = {
+                    username,
+                    firstName,
+                    lastName,
+                    phone,
+                    location
+                };
+                //TODO
+                this.$emit('update:items', [...this.items, newUser]);
+        	}
         }
     }
 }

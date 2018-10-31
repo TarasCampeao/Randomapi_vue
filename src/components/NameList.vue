@@ -1,7 +1,8 @@
 <template>
 	<div class="name-block">
-	    <navi-cell></navi-cell>
-	    <ul class="user_list collapse">
+	    <navi-cell v-if="items.results.length"></navi-cell>
+	    <p v-if="!items.results.length">No results!</p>
+	    <ul v-if="items.results.length" class="user_list collapse">
 	      <li class="people_cell" v-for="(user, index) in items.results" :class="{ collapsed: detectItem(user) }" :key="user.id.value">
 	      	<div class="main_info" @click="toggleItem(user)">
 	      		<div class="stnd_div">
@@ -59,6 +60,7 @@
 
 export default {
 	name: 'NameList',
+	//props: ['items'],
 	data() {
 		return {
 			results: [],
@@ -122,7 +124,7 @@ export default {
 	    },
 	    //remove user
 	    removeUser(user, index) {
-	    	this.items.results.splice(index, 1); 
+	    	this.items.results.splice(index, 1);
 	    },
 	},
 
@@ -134,3 +136,6 @@ export default {
 }	
 
 </script>
+
+
+
