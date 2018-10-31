@@ -5,9 +5,9 @@
 </style>
 <template>
   <div id="app" class="container">
-    <navi-cell :class="{ scrolled: active, fix: always }"></navi-cell>
+    <!-- <navi-cell :class="{ scrolled: active, fix: always }"></navi-cell> -->
     <h1>Users list!</h1>
-    <button class="add_user common_btn" @click="visible = !visible">Add user</button>
+    <!-- <button class="add_user common_btn" @click="visible = !visible">Add user</button> -->
     <!-- <form-add v-show="!visible"></form-add> -->
     <name-list></name-list>
   </div>
@@ -25,7 +25,8 @@ export default {
     return {
       visible: 'true',
       active: 'false',
-      always: 'true'
+      always: 'true',
+      length: '',
     }
   },
   created: function () {
